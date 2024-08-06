@@ -16,19 +16,32 @@ const cambiarTitulo = ()=>{
 }
 
 function crearParrafo(){
-    console.log('prueba desde crear Parrafo')
-    //crear un elemento nuevo de html
-    const parrafoNuevo = document.createElement('p');
-    console.log(parrafoNuevo);
-    //prepar el parrafo
-    parrafoNuevo.innerText = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque consequatur eum, quod quo mollitia reprehenderit ullam amet eius quis recusandae voluptatibus dolorem, nihil dolores similique nisi ut et dolor quam! Delectus dolorum hic labore laborum optio ut expedita natus consequatur, sunt maxime dolores? Fugit omnis corporis, repudiandae asperiores ipsum ullam?'
-    parrafoNuevo.className = 'lead'
     //agregarlo al dom
     const seccionPadre = document.querySelector('#contenedorPadre');
-    //hay metodos para agregar elementos hijos
-    // seccionPadre.appendChild(parrafoNuevo)
-    seccionPadre.insertBefore(parrafoNuevo,btnVerMas)
+    if(btnVerMas.innerText === 'Ver mas...'){
+        //crear el parrafo
+        console.log('prueba desde crear Parrafo')
+        //crear un elemento nuevo de html
+        const parrafoNuevo = document.createElement('p');
+        console.log(parrafoNuevo);
+        //prepar el parrafo
+        parrafoNuevo.innerText = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque consequatur eum, quod quo mollitia reprehenderit ullam amet eius quis recusandae voluptatibus dolorem, nihil dolores similique nisi ut et dolor quam! Delectus dolorum hic labore laborum optio ut expedita natus consequatur, sunt maxime dolores? Fugit omnis corporis, repudiandae asperiores ipsum ullam?'
+        parrafoNuevo.className = 'lead'
+        //hay metodos para agregar elementos hijos
+        // seccionPadre.appendChild(parrafoNuevo) //agrega el item hijo al final
+        // seccionPadre.prepend(parrafoNuevo) //agrega el item hijo al principio
+        seccionPadre.insertBefore(parrafoNuevo,btnVerMas)
+        btnVerMas.innerText = 'Ver menos';
+        btnVerMas.className = 'btn btn-danger';
+    }else{
+        console.log('aqui tengo que borrar el parrafo');
+        console.log(seccionPadre.children[2]);
+        seccionPadre.removeChild(seccionPadre.children[2]);
+        btnVerMas.innerText = 'Ver mas...';
+        btnVerMas.className = 'btn btn-outline-info'
+    }  
 }
+
 
 //traer el boton ver mas
 const btnVerMas = document.querySelector('.btn-outline-info');
