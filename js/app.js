@@ -42,13 +42,23 @@ function crearParrafo(){
     }  
 }
 
+const obtenerTexto = (e)=>{
+    e.preventDefault();
+    console.log(e);
+    console.log('desde la funcion obtenerTexto');
+    const inputBusqueda = document.querySelector('input');
+    console.log(inputBusqueda.value)
+}
+
 
 //traer el boton ver mas
 const btnVerMas = document.querySelector('.btn-outline-info');
-console.log(btnVerMas);
+const formulario = document.querySelector('form');
+console.log(formulario);
 
 //agregar el evento al boton
 //sintaxis del manejador de eventos cuando la funcion no tiene parametros
 btnVerMas.addEventListener('click', crearParrafo) 
 //sintaxis del manejador de eventos cuando la funcion SI tiene parametros 
 // btnVerMas.addEventListener('click', ()=> crearParrafo(1) ) 
+formulario.addEventListener('submit',obtenerTexto)
